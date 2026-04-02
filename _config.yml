@@ -22,7 +22,7 @@ canonical: true
 # ---------------------------------------------------------------
 # Google Webmaster tools verification setting
 # See: https://www.google.com/webmasters/
-google_site_verification:
+google_site_verification: O5CNgi37yYXs3qQp7Xz61oL_AmGiwM28d7hRt5yh2to
 
 # Bing Webmaster tools verification setting
 # See: https://www.bing.com/webmaster/
@@ -30,7 +30,7 @@ bing_site_verification:
 
 # Baidu Webmaster tools verification setting
 # See: https://ziyuan.baidu.com/site/
-baidu_site_verification:
+baidu_site_verification: pnKVynCWMP
 
 # 360 Webmaster tools verification setting
 # see http://zhanzhang.so.com/
@@ -52,8 +52,9 @@ sougou_site_verification:
 menu:
   home: / || fas fa-home
   archives: /archives/ || fas fa-folder-open
-  # categories: /categories/ || fas fa-layer-group
-  # tags: /tags/ || fas fa-tags
+  categories: /categories/ || fas fa-layer-group
+  tags: /tags/ || fas fa-tags
+  about: /about/ || fas fa-user-circle
   # You can add a secondary menu like follow.
   # xxx1: javascript:; || fa(s|r|l|d|b) fa-xxx
 
@@ -75,8 +76,8 @@ menu_settings:
 # ---------------------------------------------------------------
 
 favicon:
-  small: /images/icons/favicon-16x16.png
-  medium: /images/icons/favicon-32x32.png
+  small: /images/favicon_16.png
+  medium: /images/favicon_32.png
   # ! --------------------------------------------------
   # ! If you don't know the following, please ignore it.
   # ! --------------------------------------------------
@@ -103,13 +104,13 @@ night_mode:
     bg_color: '#8c8a8a'
   # The icon that stand for day and night.
   icon:
-    dark: 🌜
-    light: 🌞
+    dark: ☪
+    light: ☼
 
 # The layout for sidebar and content of site.
 layout:
   # The width of the content area in website.
-  content: 768px
+  content: 960px
   # The width of the sidebar in website.
   sidebar: 300px
   # The width between the content and the sidebar.
@@ -133,16 +134,16 @@ header:
   enable: true
   show_on:
     # Whether to show on the article page.
-    post: true
+    post: false
   # If you set a percentage, it will be calculated based on the height of screen (Supports all CSS units)
   height: 80%
   # Background image of site header.
   bg_image:
-    enable: false
+    enable: true
     # In theme directory (source/images): /images/avatar.png
     # In site directory (source/uploads): /uploads/avatar.png
     # You can also use a link of image.
-    url:
+    url: /images/material/background.jpg
   # Banner area.
   banner:
     # Effective for all pages.
@@ -153,7 +154,7 @@ header:
     subtitle: An elegant theme for Hexo
   # Mask effect of the background image.
   mask:
-    enable: false
+    enable: true
     # Opacity of the mask (value: 0 ~ 1)
     opacity: 0.5
   nav:
@@ -163,7 +164,7 @@ header:
     bg_color: '#333'
   # The icon that prompts the user to pull down.
   scroll_down_icon:
-    enable: false
+    enable: true
     # Icon name in FontAwesome, see: https://fontawesome.com/icons
     name: fas fa-angle-down
     animation: true
@@ -209,14 +210,14 @@ footer:
   copyright:
     enable: true
     # If not set, will be used `author` from Hexo main config (e.g. liuyib All Rights Reserved)
-    text:
+    text: Zhenchao All Rights Reserved
     # Start time. If not set, the current year will be used.
-    since:
+    since: 2015
     # End time. If not set, the current year will be used.
     end:
   # The icon between the copyright and the owner.
   icon:
-    enable: true
+    enable: false
     # Icon name in FontAwesome, see: https://fontawesome.com/icons
     name: fas fa-heart
     # Heartbeat animation.
@@ -235,9 +236,9 @@ footer:
     version: true
   # Beian information for Chinese users, see: http://www.miitbeian.gov.cn/
   beian:
-    enable: false
+    enable: true
     # 备案 XXXXXXXX 号
-    icp:
+    icp: 浙ICP备 16010916 号
   # Any custom text (e.g. Hosted by <a href="https://pages.github.com/" rel="noopener" target="_blank">Github Pages</a>)
   custom:
     enable: false
@@ -294,16 +295,16 @@ author:
     # In theme directory (source/images): /images/avatar.png
     # In site directory (source/uploads): /uploads/avatar.png
     # You can also use a link of image.
-    url: /images/icons/stun-logo.svg
+    url: /images/author.jpg
     # If true, the avatar would be displayed in a circle.
-    rounded: false
+    rounded: true
     # Opacity of avatar (value: 0 ~ 1)
     opacity: 1
     # Mouse hover animation
     # Optional values: turn | shake
-    animation: turn
+    animation: shake
   # Your favorite motto.
-  motto: Hello Stun
+  motto: 追求技术深度，注重文章质量
 
 # Social links
 # Value before `||` is the target link, value after `||` is the name of FontAwesome icon.
@@ -312,19 +313,18 @@ author:
 # If you can`t find a suitable icon, you can choose to display text by adding the `origin:` prefix.
 # e.g. `origin:sf`, so `sf` will be displayed.
 social:
-  github: https://github.com/ || fab fa-github
-  google: https://plus.google.com/ || fab fa-google
-  twitter: https://twitter.com/ || fab fa-twitter
-  youtube: https://youtube.com/ || fab fa-youtube
-  # segmentfault: https://segmentfault.com/ || origin:sf
-  # weibo: https://weibo.com/ || fab fa-weibo
+  github: https://github.com/plotor || fab fa-github
+  # youtube: https://youtube.com/ || fab fa-youtube
+  # segmentfault: https://segmentfault.com/u/zhenchao || origin:sf
+  weibo: https://weibo.com/ || fab fa-weibo
   # zhihu: https://www.zhihu.com/ || origin:知
-  # wechat: yournumber || fab fa-weixin
+  wechat: null || fab fa-weixin
   # telegram: yournumber || fab fa-telegram
-  # qq: yournumber || fab fa-qq
+  qq: null || fab fa-qq
+  twitter: https://twitter.com/ || fab fa-twitter
 
 social_setting:
-  enable: false
+  enable: true
   # Only show by icon.
   icon_only: true
 
@@ -346,13 +346,13 @@ toc:
 
 # Subscribe of email and rss.
 feed:
-  enable: false
+  enable: true
   # Enter your email subscription link (e.g. http://eepurl.com/guAE6j)
   email:
   # Enter the rss address of you set (e.g. /atom.xml)
   # Dependency: https://github.com/hexojs/hexo-generator-feed/
   # !!! Don't enable this before install dependency by `npm install hexo-generator-feed --save` in hexo root directory.
-  rss:
+  rss: /atom.xml
 
 # The reading progress of post.
 reading_progress:
@@ -368,7 +368,7 @@ reading_progress:
 codeblock:
   # The style of code block.
   # Optional values: default | simple | carbon
-  style: default
+  style: carbon
   # The theme of code highlight.
   # Optional values: light | dark | ocean
   highlight: light
@@ -400,27 +400,27 @@ post_meta:
     icon: far fa-calendar-plus
   # The update time of post.
   updated:
-    enable: true
+    enable: false
     # Icon name in FontAwesome, see: https://fontawesome.com/icons
     icon: far fa-calendar-check
   # The approximate reading time of post.
   # Dependency: https://github.com/willin/hexo-wordcount/
   # !!! Don't enable this before install dependency by `npm install hexo-wordcount --save` in hexo root directory.
   reading_time:
-    enable: false
+    enable: true
     # Icon name in FontAwesome, see: https://fontawesome.com/icons
     icon: far fa-clock
     # Set reading speed to count reading time.
     speed:
       # Reading speed of zh-CN.
-      zh: 200
+      zh: 300
       # Reading speed of en-US.
-      en: 80
+      en: 120
   # Counting the words of post.
   # Dependency: https://github.com/willin/hexo-wordcount/
   # !!! Don't enable this before install dependency by `npm install hexo-wordcount --save` in hexo root directory.
   word_count:
-    enable: false
+    enable: true
     # Icon name in FontAwesome, see: https://fontawesome.com/icons
     icon: far fa-file-word
 
@@ -429,7 +429,7 @@ post_list:
   # Whether to paginate.
   paginate:
     home: true
-    archives: false
+    archives: true
   # Whether to show the cover image of post.
   cover_image:
     home: false
@@ -568,11 +568,11 @@ disqus:
 # Utterances
 # See: https://utteranc.es/
 utterances:
-  enable: false
+  enable: true
   # Github username.
-  owner:
+  owner: plotor
   # Github repository.
-  repo:
+  repo: hexo-comments
   # Choose the mapping between blog posts and GitHub issues.
   # Optional values: pathname | url | title | og:title
   mapping: title
@@ -658,7 +658,7 @@ algolia_search:
 # Local Search
 # See: https://github.com/wzpan/hexo-generator-search/
 local_search:
-  enable: false
+  enable: true
 
 # Auxiliary search buttons
 # ! -----------------------------------------------------------------------------------------
@@ -680,7 +680,7 @@ assist_search:
 # Canvas-ribbon
 # Dependency: https://github.com/hustcc/ribbon.js
 canvas_ribbon:
-  enable: false
+  enable: true
   # The width of the ribbon.
   size: 120
   # The transparency of the ribbon.
@@ -760,7 +760,7 @@ gallery_waterfall:
 # Lazy load the images of post.
 # See: https://github.com/tuupola/lazyload
 lazyload:
-  enable: false
+  enable: true
   # Optional values: gif | block
   placeholder: gif
 
@@ -794,7 +794,7 @@ quicklink:
 # Pjax
 # See: https://github.com/MoOx/pjax/
 pjax:
-  enable: false
+  enable: true
   # When switching pages, scroll to the bottom of the top image.
   avoid_banner: false
   # ! --------------------------------------------------
@@ -848,7 +848,7 @@ tag_cloud:
   min_size: 16
   max_size: 26
   # Maximum number of tags displayed. Change it if you have more than 200 tags.
-  max_amount: 200
+  max_amount: 512
 
 # Eliminate the old version of IE browser (IE6~11).
 # See: https://support.dmeng.net/upgrade-your-browser.html
