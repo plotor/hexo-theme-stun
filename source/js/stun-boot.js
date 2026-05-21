@@ -1,6 +1,10 @@
 $(document).ready(function () {
   Stun.utils.showThemeInConsole()
 
+  if (CONFIG.unsplash && CONFIG.unsplash.enable) {
+    Stun.unsplash.init()
+  }
+
   if (CONFIG.shortcuts && CONFIG.shortcuts.switchPost) {
     Stun.utils.registerSwitchPost()
   }
@@ -11,6 +15,10 @@ $(document).ready(function () {
   }
 
   Stun.utils.pjaxReloadBoot = function () {
+    if (CONFIG.unsplash && CONFIG.unsplash.enable) {
+      Stun.unsplash.init()
+    }
+
     if (CONFIG.codeblock) {
       var codeStyle = CONFIG.codeblock.style
       if (codeStyle === 'default') {

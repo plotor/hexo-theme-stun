@@ -8,8 +8,8 @@
     "release": "standard-version",
     "release:lts": "npm run release -- --release-as",
     "release:pre": "npm run release -- --prerelease",
-    "lint": "standard",
-    "lint:fix": "standard --fix"
+    "lint": "eslint --no-cache --ext .js source/",
+    "lint:fix": "eslint --no-cache --fix --ext .js source/"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,7 @@
     "url": "https://github.com/liuyib/hexo-theme-stun/issues"
   },
   "devDependencies": {
-    "@commitlint/cli": "^11.0.0",
+    "@commitlint/cli": "^9.0.0",
     "commitizen": "^4.2.2",
     "commitlint-config-cz": "^0.13.2",
     "cz-customizable": "^6.3.0",
@@ -40,12 +40,23 @@
       "CONFIG",
       "hexo",
       "Stun",
-      "instantsearch"
+      "instantsearch",
+      "localStorage",
+      "fetch",
+      "Image",
+      "document",
+      "window",
+      "navigator",
+      "console",
+      "setTimeout",
+      "clearTimeout",
+      "setInterval",
+      "clearInterval"
     ]
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint",
+      "pre-commit": "npm run lint:fix",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },

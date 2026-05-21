@@ -144,14 +144,46 @@ header:
     # In site directory (source/uploads): /uploads/avatar.png
     # You can also use a link of image.
     url: /images/material/background.jpg
+    # Unsplash dynamic background image settings.
+    # When enabled, it will automatically fetch a random image from Unsplash daily.
+    unsplash:
+      # Enable Unsplash dynamic background image.
+      enable: true
+      # Your Unsplash API access key.
+      # Get it from: https://unsplash.com/developers
+      # Note: The API has a rate limit of 50 requests per hour for demo apps.
+      api_key: BFQf5aNMWD8KYWj1H6efSZ0qVcsWzsuV_FVmeuhJYj4
+      # Search query to filter photos by keywords.
+      # Example: 'nature', 'architecture', 'technology', 'landscape'
+      # Leave empty to get random photos without keyword filtering.
+      query:
+      # Comma-separated list of collections to randomly select from.
+      # Leave empty to get random photos from all collections.
+      # Example: '1234567, 2345678'
+      collections:
+      # Comma-separated list of topics to filter photos.
+      # Example: 'nature', 'architecture', 'travel'
+      # Leave empty to get random photos from all topics.
+      topics: nature
+      # Limit to featured photos only.
+      featured: true
+      # Image orientation. Options: landscape | portrait | squarish
+      # Recommended: landscape (better for header background)
+      orientation: landscape
+      # Image width in pixels. Recommended: 1920 for full HD displays.
+      width: 1280
+      # Image height in pixels. Recommended: 1080 for full HD displays.
+      height: 720
+      # Cache duration in hours. Default: 24 hours (update once per day).
+      cache_duration: 1
   # Banner area.
   banner:
     # Effective for all pages.
     enable: true
     # You can override it by `header_title` in Front-Matter of .md
-    title: Hello Stun
+    title: 指 间
     # You can override it by `header_subtitle` in Front-Matter of .md
-    subtitle: An elegant theme for Hexo
+    subtitle: 弹指间，书写极客篇章
   # Mask effect of the background image.
   mask:
     enable: true
@@ -865,7 +897,7 @@ kill_old_ie:
 css: css
 # In theme/hexo directory (source/css/custom.css)
 # Allow user to override css.
-css_custom: css/custom.css
+# css_custom: css/custom.css
 # In theme directory (source/js)
 js: js
 # In theme directory (source/images)

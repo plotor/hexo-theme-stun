@@ -1,5 +1,20 @@
 'use strict'
 
+hexo.extend.filter.register('before_post_render', function (data) {
+  if (!data.content) {
+    return data
+  }
+
+  data.content = data.content.replace(
+    /__(?![\s_])(.+?)(?<![\s_])__/g,
+    function (match, content) {
+      return '**' + content + '**'
+    }
+  )
+
+  return data
+}, 0)
+
 hexo.extend.filter.register(
   'after_post_render',
   function (data) {

@@ -549,21 +549,15 @@ Stun.utils = Stun.$u = {
       }
     })
   },
-  addCopyButton: function (type) {
-    var btnContainer = '.post-copyright,'
+  addCopyButton: function () {
     var $copyIcon = $(
       `<div class="copy-button" data-popover="${CONFIG.prompt.copyButton}" data-popover-pos="up">` +
         `<i class="${CONFIG.fontIcon.copyBtn}"></i>` +
         '</div>'
     )
 
-    if (type === 'simple' || type === 'carbon') {
-      btnContainer += '.highlight figcaption:not(".custom")'
-    } else {
-      btnContainer += '.highlight figcaption'
-    }
-    // Add a copy button to the selected elements.
-    $(btnContainer).append($copyIcon)
+    $('.post-copyright').append($copyIcon.clone())
+    $('figure.highlight').append($copyIcon.clone())
   },
   registerCopyEvent: function () {
     $('.copy-button').on('click', function () {

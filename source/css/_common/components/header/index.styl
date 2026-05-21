@@ -196,6 +196,50 @@ if (hexo-config('header.nav.height') && match('%', hexo-config('header.nav.heigh
       background: url(hexo-config('header.bg_image.url')) no-repeat center / cover;
     }
 
+    &.unsplash-bg {
+      background: none;
+    }
+
+    &.unsplash-bg-loaded {
+      animation: fadeIn .5s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    &-loading {
+      display: flex;
+      justify-content: center;
+      margin: 1.5rem 0;
+      opacity: 1;
+      transition: opacity .5s ease;
+
+      &__spinner {
+        width: 120px;
+        height: 20px;
+        -webkit-mask: unquote('linear-gradient(90deg, #fff 70%, rgba(255, 255, 255, 0) 0) left / 20% 100%');
+        background: unquote('linear-gradient(#fff 0 0) left -25% top 0 / 20% 100% no-repeat') alpha(#fff, .3);
+        animation: l7 1s infinite steps(6);
+      }
+    }
+
+    @keyframes l7 {
+      100% {
+        background-position: right -25% top 0;
+      }
+    }
+
+    &.unsplash-bg-loaded &-loading {
+      opacity: 0;
+      pointer-events: none;
+    }
+
     if (hexo-config('header.mask.enable')) {
       &::before {
         content: '';

@@ -154,6 +154,22 @@
     images: theme.images
   });
 
+  var unsplash = 'undefined';
+  if (theme.header.bg_image.unsplash && theme.header.bg_image.unsplash.enable) {
+    unsplash = JSON.stringify({
+      enable: theme.header.bg_image.unsplash.enable,
+      apiKey: theme.header.bg_image.unsplash.api_key,
+      query: theme.header.bg_image.unsplash.query,
+      collections: theme.header.bg_image.unsplash.collections,
+      topics: theme.header.bg_image.unsplash.topics,
+      featured: theme.header.bg_image.unsplash.featured,
+      orientation: theme.header.bg_image.unsplash.orientation,
+      width: theme.header.bg_image.unsplash.width,
+      height: theme.header.bg_image.unsplash.height,
+      cache_duration: theme.header.bg_image.unsplash.cache_duration
+    });
+  }
+
 script.
   var Stun = window.Stun || {};
   var CONFIG = {
@@ -177,6 +193,7 @@ script.
     shortcuts: !{ shortcuts },
     prompt: !{ prompt },
     sourcePath: !{ sourcePath },
+    unsplash: !{ unsplash },
   };
 
   window.CONFIG = CONFIG;

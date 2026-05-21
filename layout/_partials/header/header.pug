@@ -20,7 +20,9 @@ nav.header-nav(class=`${isNoHeader ? 'header-nav--sticky' : 'header-nav--fixed'}
         include ../widgets/night-mode.pug
 
 if !isNoHeader
+  - var unsplashEnabled = theme.header.bg_image.unsplash && theme.header.bg_image.unsplash.enable
   div.header-banner(
+    class=`${unsplashEnabled ? 'unsplash-bg' : ''}`,
     style=`${
       (theme.header.bg_image.enable && page.top_image)
         ? 'background: url(' + page.top_image + ') no-repeat center/cover;'
@@ -31,6 +33,11 @@ if !isNoHeader
       div.header-banner-info
         if page.header_title || theme.header.banner.title
           div.header-banner-info__title= page.header_title || theme.header.banner.title
+        
+        if unsplashEnabled
+          div.header-banner-loading
+            div.header-banner-loading__spinner
+        
         if page.header_subtitle || theme.header.banner.subtitle
           div.header-banner-info__subtitle= page.header_subtitle || theme.header.banner.subtitle
 
