@@ -30,7 +30,8 @@ if !isNoHeader
     }`
   )
     if theme.header.banner.enable
-      div.header-banner-info
+      - var isHitokoto = theme.header.banner.hitokoto && theme.header.banner.hitokoto.enable
+      div.header-banner-info(class=isHitokoto ? 'hitokoto-enabled' : '')
         if page.header_title || theme.header.banner.title
           div.header-banner-info__title= page.header_title || theme.header.banner.title
         
@@ -39,7 +40,9 @@ if !isNoHeader
             div.header-banner-loading__spinner
         
         if page.header_subtitle || theme.header.banner.subtitle
-          div.header-banner-info__subtitle= page.header_subtitle || theme.header.banner.subtitle
+          div.header-banner-info__subtitle(class=isHitokoto ? 'hitokoto-subtitle' : '')= isHitokoto ? '' : (page.header_subtitle || theme.header.banner.subtitle)
+          if isHitokoto
+            div.header-banner-info__subtitle-source
 
     if theme.header.scroll_down_icon.enable
       div.header-banner-arrow

@@ -170,6 +170,16 @@
     });
   }
 
+  var hitokoto = 'undefined';
+  if (theme.header.banner.hitokoto && theme.header.banner.hitokoto.enable) {
+    hitokoto = JSON.stringify({
+      enable: theme.header.banner.hitokoto.enable,
+      category: theme.header.banner.hitokoto.category || '',
+      maxLength: theme.header.banner.hitokoto.max_length || 50,
+      showSource: theme.header.banner.hitokoto.show_source !== false
+    });
+  }
+
 script.
   var Stun = window.Stun || {};
   var CONFIG = {
@@ -194,6 +204,7 @@ script.
     prompt: !{ prompt },
     sourcePath: !{ sourcePath },
     unsplash: !{ unsplash },
+    hitokoto: !{ hitokoto },
   };
 
   window.CONFIG = CONFIG;

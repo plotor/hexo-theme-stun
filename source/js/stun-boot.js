@@ -19,6 +19,10 @@ $(document).ready(function () {
       Stun.unsplash.init()
     }
 
+    if (CONFIG.hitokoto && CONFIG.hitokoto.enable) {
+      Stun.hitokoto.init()
+    }
+
     if (CONFIG.codeblock) {
       var codeStyle = CONFIG.codeblock.style
       if (codeStyle === 'default') {

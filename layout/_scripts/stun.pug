@@ -1,5 +1,7 @@
 script(src=`${url_for(theme.js)}/utils.js?v=${stun_env('version')}`)
 script(src=`${url_for(theme.js)}/unsplash-bg.js?v=${stun_env('version')}`)
+if theme.header.banner.hitokoto && theme.header.banner.hitokoto.enable
+  script(src=`${url_for(theme.js)}/hitokoto.js?v=${stun_env('version')}`)
 script(src=`${url_for(theme.js)}/stun-boot.js?v=${stun_env('version')}`)
 script(src=`${url_for(theme.js)}/scroll.js?v=${stun_env('version')}`)
 script(src=`${url_for(theme.js)}/header.js?v=${stun_env('version')}`)

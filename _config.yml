@@ -184,6 +184,18 @@ header:
     title: 指 间
     # You can override it by `header_subtitle` in Front-Matter of .md
     subtitle: 弹指间，书写极客篇章
+    # Hitokoto - Daily quote from https://hitokoto.cn/
+    # When enabled, the subtitle will be dynamically replaced by a random quote from Hitokoto.
+    hitokoto:
+      # Enable Hitokoto to replace the static subtitle.
+      enable: true
+      # Sentence category. Optional values: a(animation) | b(comic) | c(game) | d(literature) | e(original) | f(web) | g(other) | h(movie) | i(poetry) | j(netesaycloud) | k(philosophy) | l(humor)
+      # You can specify multiple categories, e.g. ?c=d&c=i
+      category: d
+      # Max length of the returned sentence.
+      max_length: 50
+      # Show the source of the quote (e.g. author and work).
+      show_source: true
   # Mask effect of the background image.
   mask:
     enable: true
