@@ -4,6 +4,7 @@
   Stun.hitokoto = {
     _timer: null,
     _loading: false,
+    _pendingData: null,
 
     _typeText: function (el, text, callback) {
       var i = 0;
@@ -21,6 +22,54 @@
           if (typeof callback === 'function') callback();
         }
       }, 80);
+    },
+
+    _isUnsplashLoading: function () {
+      var banner = document.querySelector('.header-banner');
+      return banner && banner.classList.contains('unsplash-bg');
+    },
+
+    _waitForUnsplash: function (callback) {
+      if (!this._isUnsplashLoading()) {
+        callback();
+        return;
+      }
+
+      var banner = document.querySelector('.header-banner');
+      var checkInterval = setInterval(function () {
+        if (!banner.classList.contains('unsplash-bg')) {
+          clearInterval(checkInterval);
+          callback();
+        }
+      }, 100);
+
+      setTimeout(function () {
+        clearInterval(checkInterval);
+        callback();
+      }, 8000);
+    },
+
+    _showData: function (data) {
+      var config = CONFIG.hitokoto;
+      var $subtitle = document.querySelector('.hitokoto-subtitle');
+      var $source = document.querySelector('.header-banner-info__subtitle-source');
+      if (!$subtitle) return;
+
+      var text = data.hitokoto || '';
+      var from = data.from || '';
+      var fromWho = data.from_who || '';
+
+      this._typeText($subtitle, text, function () {
+        if ($source && config.showSource) {
+          var sourceParts = [];
+          if (fromWho) sourceParts.push(fromWho);
+          if (from) sourceParts.push(from);
+          if (sourceParts.length > 0) {
+            $source.textContent = '—— ' + sourceParts.join(' · ');
+            $source.classList.add('hitokoto-source-visible');
+          }
+        }
+      });
     },
 
     init: function () {
@@ -64,20 +113,8 @@
         .then(function (res) { return res.json(); })
         .then(function (data) {
           Stun.hitokoto._loading = false;
-          var text = data.hitokoto || '';
-          var from = data.from || '';
-          var fromWho = data.from_who || '';
-
-          Stun.hitokoto._typeText($subtitle, text, function () {
-            if ($source && config.showSource) {
-              var sourceParts = [];
-              if (fromWho) sourceParts.push(fromWho);
-              if (from) sourceParts.push(from);
-              if (sourceParts.length > 0) {
-                $source.textContent = '—— ' + sourceParts.join(' · ');
-                $source.classList.add('hitokoto-source-visible');
-              }
-            }
+          Stun.hitokoto._waitForUnsplash(function () {
+            Stun.hitokoto._showData(data);
           });
         })
         .catch(function () {

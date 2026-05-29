@@ -274,7 +274,14 @@ if (hexo-config('header.nav.height') && match('%', hexo-config('header.nav.heigh
         top: 50%;
         left: 0;
         width: 100%;
-        transform: translateY(-100%);
+        transform: translateY(calc(-100% - 2rem));
+      }
+
+      &.hitokoto-enabled .header-banner-loading {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
       }
 
       &.hitokoto-enabled &__subtitle {
