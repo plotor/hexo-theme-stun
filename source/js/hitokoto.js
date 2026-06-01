@@ -4,7 +4,7 @@
   Stun.hitokoto = {
     _timer: null,
     _loading: false,
-    _pendingData: null,
+    _requestId: 0,
 
     _typeText: function (el, text, callback) {
       var i = 0;
@@ -36,16 +36,25 @@
       }
 
       var banner = document.querySelector('.header-banner');
+      var done = false;
+      var timeout = null;
+
+      function finish () {
+        if (done) return;
+        done = true;
+        clearInterval(checkInterval);
+        clearTimeout(timeout);
+        callback();
+      }
+
       var checkInterval = setInterval(function () {
         if (!banner.classList.contains('unsplash-bg')) {
-          clearInterval(checkInterval);
-          callback();
+          finish();
         }
       }, 100);
 
-      setTimeout(function () {
-        clearInterval(checkInterval);
-        callback();
+      timeout = setTimeout(function () {
+        finish();
       }, 8000);
     },
 
@@ -76,6 +85,7 @@
       var config = CONFIG.hitokoto;
       if (!config || !config.enable) return;
       if (this._loading) return;
+      var requestId = ++this._requestId;
 
       var $subtitle = document.querySelector('.hitokoto-subtitle');
       var $source = document.querySelector('.header-banner-info__subtitle-source');
@@ -114,6 +124,7 @@
         .then(function (data) {
           Stun.hitokoto._loading = false;
           Stun.hitokoto._waitForUnsplash(function () {
+            if (requestId !== Stun.hitokoto._requestId) return;
             Stun.hitokoto._showData(data);
           });
         })
